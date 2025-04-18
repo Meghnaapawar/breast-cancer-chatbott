@@ -1,0 +1,222 @@
+[
+    {
+      "question": "What is breast cancer?",
+      "answer": "Breast cancer is a disease where breast cells grow uncontrollably."
+    },
+    {
+      "question": "Is breast cancer common in women?",
+      "answer": "Yes, breast cancer is one of the most common cancers in women worldwide."
+    },
+    {
+      "question": "What are the symptoms of breast cancer?",
+      "answer": "Lump in the breast, nipple discharge, change in size or shape of the breast, skin dimpling."
+    },
+    {
+      "question": "What are the early signs of breast cancer?",
+      "answer": "Common signs include a lump in the breast or underarm, swelling, changes in breast shape or \nsize, nipple discharge, or skin changes on the breast."
+    },
+    {
+      "question": "Does a lump in the breast always mean cancer?",
+      "answer": "Not always. Many lumps are benign (non-cancerous), but it’s important to get them checked \nby a doctor."
+    },
+    {
+      "question": "How is breast cancer detected?",
+      "answer": "It can be detected through self-exams, clinical breast exams, mammograms, ultrasounds, or \nbiopsies."
+    },
+    {
+      "question": "What is a mammogram?",
+      "answer": "A mammogram is an X-ray of the breast used to detect tumors or abnormalities."
+    },
+    {
+      "question": "At what age should I start getting mammograms?",
+      "answer": "Generally, women aged 40 and older should have regular mammograms, but this may vary \nbased on risk factors."
+    },
+    {
+      "question": "How is breast cancer diagnosed?",
+      "answer": "Through mammogram, ultrasound, MRI, and biopsy."
+    },
+    {
+      "question": "What are the treatments available?",
+      "answer": "Surgery, chemotherapy, radiation therapy, hormone therapy, and targeted therapy."
+    },
+    {
+      "question": "Can men get breast cancer?",
+      "answer": "Yes, although rare, men can also develop breast cancer."
+    },
+    {
+      "question": "Is breast cancer curable?",
+      "answer": "Yes, especially if detected early and treated properly."
+    },
+    {
+      "question": "What are the risk factors for breast cancer?",
+      "answer": "Risk factors include age, family history, genetics (BRCA1/BRCA2), hormonal factors, \nobesity, alcohol use, and lack of physical activity."
+    },
+    {
+      "question": "Can breast cancer be prevented?",
+      "answer": "While it can’t always be prevented, healthy lifestyle choices and regular screenings can \nreduce the risk."
+    },
+    {
+      "question": "Is breast cancer hereditary?",
+      "answer": "Yes, in some cases, mutations in genes like BRCA1 and BRCA2 can be inherited and \nincrease risk."
+    },
+    {
+      "question": "How to reduce the risk?",
+      "answer": "Exercise regularly, maintain healthy weight, avoid alcohol, and go for regular screenings."
+    },
+    {
+      "question": "Which doctors should I consult?",
+      "answer": "Oncologist, radiologist, breast surgeon, and gynecologist."
+    },
+    {
+      "question": "Where can I get treatment in India?",
+      "answer": "Tata Memorial Hospital, AIIMS, Apollo, Fortis, and Max Healthcare."
+    },
+    {
+      "question": "What are the treatment options for breast cancer?",
+      "answer": "Treatment may include surgery, chemotherapy, radiation therapy, hormone therapy, and \ntargeted therapy."
+    },
+    {
+      "question": "Will I lose my hair during breast cancer treatment?",
+      "answer": "Some treatments, like chemotherapy, can cause hair loss, but it’s usually temporary."
+    },
+    {
+      "question": "Can breast cancer be cured?",
+      "answer": "If detected early, breast cancer is highly treatable and sometimes curable."
+    },
+    {
+      "question": "How can I cope emotionally after a breast cancer diagnosis?",
+      "answer": "Talking to a counselor, joining a support group, and connecting with loved ones can help."
+    },
+    {
+      "question": "Are there support groups for women with breast cancer?",
+      "answer": "Yes, many hospitals and organizations offer in-person and online support groups."
+    },
+    {
+      "question": "Does wearing a bra cause breast cancer?",
+      "answer": "No, there is no scientific evidence linking bras to breast cancer."
+    },
+    {
+      "question": "Can breast cancer spread from one person to another?",
+      "answer": "No, breast cancer is not contagious."
+    },
+    {
+      "question": "What is a biopsy?",
+      "answer": "A biopsy is a procedure where a small sample of breast tissue is removed and examined under \na microscope to check for cancer cells."
+    },
+    {
+      "question": "What does \"stage\" of breast cancer mean?",
+      "answer": "The stage indicates how far the cancer has spread. It ranges from Stage 0 (non-invasive) to \nStage IV (advanced/metastatic)."
+    },
+    {
+      "question": "What is the difference between invasive and non-invasive breast cancer?",
+      "answer": "Non-invasive breast cancer stays in the milk ducts or lobules, while invasive breast cancer \nspreads into surrounding breast tissue."
+    },
+    {
+      "question": "What are BRCA1 and BRCA2 genes?",
+      "answer": "These are genes that help repair DNA. Mutations in them can increase the risk of breast and \novarian cancer."
+    },
+    {
+      "question": "What is chemotherapy?",
+      "answer": "Chemotherapy uses drugs to kill cancer cells. It's often used before or after surgery, or if \ncancer has spread."
+    },
+    {
+      "question": "What is radiation therapy?",
+      "answer": "Radiation uses high-energy rays to target and kill cancer cells in a specific area, often after \nsurgery."
+    },
+    {
+      "question": "What is hormone therapy in breast cancer?",
+      "answer": "Hormone therapy blocks hormones like estrogen or progesterone that help some breast \ncancers grow."
+    },
+    {
+      "question": "What is targeted therapy?",
+      "answer": "Targeted therapy uses drugs to attack specific molecules involved in cancer growth, like \nHER2-positive breast cancers."
+    },
+    {
+      "question": "What should I eat during breast cancer treatment?",
+      "answer": "A balanced diet with fruits, vegetables, lean protein, and whole grains is recommended. \nAlways follow your doctor’s dietary advice."
+    },
+    {
+      "question": "Can I exercise during treatment?",
+      "answer": "Light exercise like walking or yoga can be beneficial, but consult your doctor before starting \nany routine."
+    },
+    {
+      "question": "Will I still be able to work during treatment?",
+      "answer": "It depends on your treatment and how your body responds. Some women continue to work, \nwhile others may need rest."
+    },
+    {
+      "question": "How long is recovery after breast cancer surgery?",
+      "answer": "Recovery time varies by procedure. Lumpectomy recovery may take a few weeks, while \nmastectomy could take longer."
+    },
+    {
+      "question": "Can I get pregnant after breast cancer treatment?",
+      "answer": "Some treatments affect fertility. If you want children in the future, speak to your doctor about \nfertility preservation before treatment."
+    },
+    {
+      "question": "Can I breastfeed after breast cancer?",
+      "answer": "It depends on the treatment and type of surgery. Some women can breastfeed from the \nunaffected breast."
+    },
+    {
+      "question": "What are the chances of breast cancer coming back?",
+      "answer": "It depends on the type, stage, and treatment. Regular follow-ups help detect any recurrence \nearly."
+    },
+    {
+      "question": "What should I do after finishing treatment?",
+      "answer": "You’ll need regular checkups, a healthy lifestyle, and emotional support. Survivorship care is \nan important phase of healing."
+    },
+    {
+      "question": "How can I raise awareness about breast cancer?",
+      "answer": "You can share information, participate in awareness events, support survivors, and encourage \nothers to get screened."
+    },
+    {
+      "question": "Why is early detection so important?",
+      "answer": "The earlier breast cancer is detected, the better the chances of successful treatment and \nsurvival."
+    },
+    {
+      "question": "What is Breast Cancer Awareness Month?",
+      "answer": "It’s held every October to increase awareness, support survivors, and promote early detection \nthrough education and screenings."
+    },
+    {
+      "question": "Is breast cancer serious?",
+      "answer": "Breast cancer can be serious, especially if not detected early. But with timely diagnosis and \ntreatment, many women recover and live long, healthy lives."
+    },
+    {
+      "question": "Should I be worried about a lump in my breast?",
+      "answer": "Not all lumps are cancerous—some may be benign. However, it’s important to get any lump \nchecked by a doctor to be safe."
+    },
+    {
+      "question": "What if I ignore the symptoms?",
+      "answer": "Ignoring symptoms can allow cancer to spread and become harder to treat. Early detection \nsaves lives, so don’t delay seeing a doctor."
+    },
+    {
+      "question": "Is breast cancer a death sentence?",
+      "answer": "Not at all. Many people survive breast cancer, especially when it’s found early and treated \nproperly."
+    },
+    {
+      "question": "Can breast cancer go away on its own?",
+      "answer": "No, breast cancer does not go away without treatment. It’s important to consult a doctor as \nearly as possible."
+    },
+    {
+      "question": "I don’t have a family history of breast cancer—should I still worry?",
+      "answer": "Yes. Most breast cancer cases occur in women with no family history. That’s why regular \nscreening and awareness are key for everyone."
+    },
+    {
+      "question": "Is breast pain a sign of cancer?",
+      "answer": "Breast pain is usually not a sign of cancer. It can be caused by hormonal changes or other \nbenign conditions, but it's worth checking if you're unsure."
+    },
+    {
+      "question": "I feel fine—do I still need screening?",
+      "answer": "Yes! Breast cancer can develop without symptoms. Regular screenings like mammograms \ncan catch it early before any signs appear."
+    },
+    {
+      "question": "Can breast cancer spread to other parts of the body?",
+      "answer": "In some cases, yes. That’s why early diagnosis and treatment are important to stop it from \nspreading."
+    },
+    {
+      "question": "Will treatment hurt?",
+      "answer": "Some treatments may have side effects, but your healthcare team will help manage them and \nkeep you comfortable throughout the process."
+    },
+    {
+      "question": "Can I live a normal life after breast cancer?",
+      "answer": "Absolutely. Many women go on to live full, active lives after treatment and recovery."
+    }
+  ]
