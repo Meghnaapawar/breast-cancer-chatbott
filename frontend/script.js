@@ -1,50 +1,34 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const chatbox = document.getElementById("chatbox");
-  const userInput = document.getElementById("user-input");
-  const sendButton = document.getElementById("send-button");
+function sendMessage() {
+  const userInput = document.getElementById('user-input').value;
+  const language = document.getElementById('language').value;
+  const chatBox = document.getElementById('chat-box');
 
-  async function fetchChatResponse(userText) {
-    try {
-      const response = await fetch('/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ question: userText })
-      });
+  chatBox.innerHTML += `<div><strong>You:</strong> ${userInput}</div>`;
 
-      const data = await response.json();
-      appendMessage(`Bot: ${data.answer}`);
-    } catch (err) {
-      console.error("Error:", err);
-      appendMessage("Bot: Sorry, something went wrong.");
-    }
-  }
-
-  function appendMessage(text) {
-    const msg = document.createElement("div");
-    msg.textContent = text;
-    chatbox.appendChild(msg);
-  }
-
-  sendButton.addEventListener("click", () => {
-    const userText = userInput.value.trim();
-    if (userText === "") return;
-    appendMessage(`You: ${userText}`);
-    fetchChatResponse(userText);
-    userInput.value = "";
+  fetch('http://127.0.0.1:5000/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: userInput, language: language })
+  })
+  .then(res => res.json())
+  .then(data => {
+    chatBox.innerHTML += `<div><strong>Bot:</strong> ${data.reply}</div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
   });
 
-  async function loadHospitals() {
-    try {
-      const response = await fetch('/hospitals');
-      const data = await response.json();
-      const hospitalDiv = document.getElementById("hospitals");
-      hospitalDiv.innerHTML = data.hospitals.map(h => `<li>${h.name}</li>`).join('');
-    } catch (err) {
-      console.error("Error loading hospitals:", err);
-    }
-  }
+  document.getElementById('user-input').value = '';
+}
 
-  loadHospitals();
-});
+function loadHospitals() {
+  fetch('http://127.0.0.1:5000/hospitals')
+    .then(res => res.json())
+    .then(data => {
+      const list = document.getElementById('hospital-list');
+      list.innerHTML = '';
+      data.forEach(hospital => {
+        const item = document.createElement('li');
+        item.textContent = `${hospital['Hospital Name']} (${hospital.City}, ${hospital.State}) - ${hospital.Type}`;
+        list.appendChild(item);
+      });
+    });
+}

@@ -1,37 +1,35 @@
-from flask import Flask, request, jsonify, render_template, send_from_directory
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 import json
+import difflib
 import os
 
-app = Flask(__name__, static_folder='frontend', template_folder='frontend')
+app = Flask(__name__)
+CORS(app)
 
-# Load QnA data
-with open('qa_data.json', 'r', encoding='utf-8') as f:
-    qna_data = json.load(f)
+# Load Q&A Data
+with open("qa_data.json", "r", encoding="utf-8") as f:
+    qa_data = json.load(f)
 
-# Load hospital data
-with open('hospitals.json', 'r', encoding='utf-8') as f:
-    hospital_data = json.load(f)
-
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-@app.route('/chat', methods=['POST'])
+@app.route("/chat", methods=["POST"])
 def chat():
-    data = request.get_json()
-    question = data.get('question', '').lower()
-    for item in qna_data:
-        if question in item['question'].lower():
-            return jsonify({'answer': item['answer']})
-    return jsonify({'answer': 'Sorry, I do not understand your question.'})
+    user_input = request.json.get("message", "").lower()
 
-@app.route('/hospitals', methods=['GET'])
-def get_hospitals():
-    return jsonify({'hospitals': hospital_data})
+    # Extract all questions from the dataset
+    questions = [item["question"].lower() for item in qa_data]
 
-@app.route('/<path:path>')
-def serve_static(path):
-    return send_from_directory('frontend', path)
+    # Find closest match to user's input
+    match = difflib.get_close_matches(user_input, questions, n=1, cutoff=0.5)
 
+    if match:
+        matched_question = match[0]
+        for item in qa_data:
+            if item["question"].lower() == matched_question:
+                return jsonify({"reply": item["answer"]})
+
+    return jsonify({"reply": "Sorry, I couldn't find an answer. Please consult a doctor."})
+
+# Run the server on the correct port
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
