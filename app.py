@@ -1,42 +1,26 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
 import json
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
-CORS(app)  # Allow cross-origin requests
 
-# Load qa_data.json file
-with open('qa_data.json', 'r') as file:
-    qa_data = json.load(file)
+# Load your Q&A data from the JSON file
+with open('qa_data.json', 'r') as f:
+    qa_data = json.load(f)
 
-# Dummy function to handle user input and provide response from qa_data.json
 @app.route('/chat', methods=['POST'])
 def chat():
-    user_input = request.json.get('message')  # Get the user input from frontend
-    language = request.json.get('language')  # Get the selected language (if needed)
+    user_message = request.json.get('message')
+    language = request.json.get('language')
 
-    # Loop through qa_data to find a matching question
-    for entry in qa_data['qa']:
-        if entry['question'].lower() in user_input.lower():
-            response = entry['answer']
+    # Match the user input to an answer
+    for qa in qa_data['qna']:
+        if user_message.lower() in qa['question'].lower():
+            response = qa['answer']
             break
     else:
-        response = "Sorry, I don't understand that question."
+        response = "Sorry, I don't understand the question."
 
-    # Return the response to the frontend
     return jsonify({'reply': response})
 
-# Hospital data endpoint (you can modify as per your hospitals.json structure)
-@app.route('/hospitals', methods=['GET'])
-def hospitals():
-    hospitals = [
-        "Tata Memorial Hospital, Mumbai",
-        "AIIMS, Delhi",
-        "Apollo Hospitals",
-        "Fortis Healthcare",
-        "Max Healthcare"
-    ]
-    return jsonify(hospitals)
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
