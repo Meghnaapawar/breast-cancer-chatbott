@@ -27,7 +27,7 @@ function loadHospitals() {
       list.innerHTML = '';
       data.forEach(hospital => {
         const item = document.createElement('li');
-        item.textContent = `${hospital['Hospital Name']} (${hospital.City}, ${hospital.State}) - ${hospital.Type}`;
+        item.textContent = hospital;
         list.appendChild(item);
       });
     });

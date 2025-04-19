@@ -1,10 +1,35 @@
 {
     "hospitals": [
-      "Tata Memorial Hospital, Mumbai",
-      "AIIMS, Delhi",
-      "Apollo Hospitals",
-      "Fortis Healthcare",
-      "Max Healthcare"
+      {
+        "Hospital Name": "Tata Memorial Hospital",
+        "City": "Mumbai",
+        "State": "Maharashtra",
+        "Type": "Cancer Treatment"
+      },
+      {
+        "Hospital Name": "AIIMS",
+        "City": "Delhi",
+        "State": "Delhi",
+        "Type": "General Hospital"
+      },
+      {
+        "Hospital Name": "Apollo Hospitals",
+        "City": "Various Locations",
+        "State": "Multiple States",
+        "Type": "Multi-specialty"
+      },
+      {
+        "Hospital Name": "Fortis Healthcare",
+        "City": "Various Locations",
+        "State": "Multiple States",
+        "Type": "Multi-specialty"
+      },
+      {
+        "Hospital Name": "Max Healthcare",
+        "City": "Delhi",
+        "State": "Delhi",
+        "Type": "Multi-specialty"
+      }
     ]
   }
   

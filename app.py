@@ -1,47 +1,42 @@
-import json
 from flask import Flask, request, jsonify
+from flask_cors import CORS
+import json
 
 app = Flask(__name__)
+CORS(app)  # Allow cross-origin requests
 
-# Function to load the questions and answers from JSON file
-def get_answer_from_json(question):
-    try:
-        # Ensure you're loading the correct file
-        with open("qa_data.json", "r") as file:
-            data = json.load(file)
-            print("Loaded data:", data)  # Debug: print the loaded JSON
+# Load qa_data.json file
+with open('qa_data.json', 'r') as file:
+    qa_data = json.load(file)
 
-        # Clean and match the user question
-        question_lower = question.strip().lower()
-        print("User question (lowercase):", question_lower)  # Debug: print cleaned user input
-
-        for item in data:
-            item_question = item["question"].strip().lower()
-            print("Item question:", item_question)  # Debug: print item question
-
-            if item_question == question_lower:
-                print("Answer found:", item["answer"])  # Debug: print the found answer
-                return item["answer"]
-
-        return "🤖 I'm sorry, I don't have an answer for that yet."
-
-    except FileNotFoundError:
-        return "Error: qa_data.json not found."
-    except json.JSONDecodeError:
-        return "Error: Invalid JSON format."
-
-# Route to handle chat requests
-@app.route("/chat", methods=["POST"])
+# Dummy function to handle user input and provide response from qa_data.json
+@app.route('/chat', methods=['POST'])
 def chat():
-    data = request.get_json()
-    user_input = data.get("message")
+    user_input = request.json.get('message')  # Get the user input from frontend
+    language = request.json.get('language')  # Get the selected language (if needed)
 
-    if not user_input:
-        return jsonify({"response": "⚠️ Please provide a message."})
+    # Loop through qa_data to find a matching question
+    for entry in qa_data['qa']:
+        if entry['question'].lower() in user_input.lower():
+            response = entry['answer']
+            break
+    else:
+        response = "Sorry, I don't understand that question."
 
-    # Get the response based on the user's question
-    response = get_answer_from_json(user_input)
-    return jsonify({"response": response})
+    # Return the response to the frontend
+    return jsonify({'reply': response})
 
-if __name__ == "__main__":
+# Hospital data endpoint (you can modify as per your hospitals.json structure)
+@app.route('/hospitals', methods=['GET'])
+def hospitals():
+    hospitals = [
+        "Tata Memorial Hospital, Mumbai",
+        "AIIMS, Delhi",
+        "Apollo Hospitals",
+        "Fortis Healthcare",
+        "Max Healthcare"
+    ]
+    return jsonify(hospitals)
+
+if __name__ == '__main__':
     app.run(debug=True)
