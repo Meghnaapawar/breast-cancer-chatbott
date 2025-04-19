@@ -1,44 +1,35 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import pandas as pd
 import json
+import difflib
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-# Load Q&A data
-with open('qa_data.json', 'r', encoding='utf-8') as f:
-    qa_pairs = json.load(f)
+# Load Q&A Data
+with open("qa_data.json", "r", encoding="utf-8") as f:
+    qa_data = json.load(f)
 
-# Load hospital data
-hospitals = pd.read_csv('Breast_Cancer_Hospitals_India.csv')
-
-def search_answer(user_input):
-    for pair in qa_pairs:
-        if pair['question'].lower() in user_input.lower():
-            return pair['answer']
-    return "Sorry, I couldn’t find an answer. Please consult a doctor."
-
-@app.route('/chat', methods=['POST'])
+@app.route("/chat", methods=["POST"])
 def chat():
-    data = request.json
-    user_input = data.get("message", "")
-    language = data.get("language", "English")
+    user_input = request.json.get("message", "").lower()
 
-    # Basic response
-    answer = search_answer(user_input)
+    # Extract all questions from the dataset
+    questions = [item["question"].lower() for item in qa_data]
 
-    # Language support (fake for now, real translation coming next)
-    if language == "Hindi":
-        answer = "यह उत्तर हिंदी में है: " + answer
-    elif language == "Marathi":
-        answer = "हा उत्तर मराठीत आहे: " + answer
+    # Find closest match to user's input
+    match = difflib.get_close_matches(user_input, questions, n=1, cutoff=0.5)
 
-    return jsonify({"reply": answer})
+    if match:
+        matched_question = match[0]
+        for item in qa_data:
+            if item["question"].lower() == matched_question:
+                return jsonify({"reply": item["answer"]})
 
-@app.route('/hospitals', methods=['GET'])
-def get_hospitals():
-    return hospitals.to_json(orient='records')
+    return jsonify({"reply": "Sorry, I couldn't find an answer. Please consult a doctor."})
 
+# Run the server on the correct port
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)

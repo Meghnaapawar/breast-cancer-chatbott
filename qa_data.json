@@ -196,6 +196,18 @@
       "answer": "No, breast cancer does not go away without treatment. It’s important to consult a doctor as \nearly as possible."
     },
     {
+      "question": "Hospitals in Mumbai?",
+      "answer": "For breast cancer treatment in Mumbai, you can visit Tata Memorial Hospital, Kokilaben Dhirubhai Ambani Hospital, and Fortis Hospital."
+    },
+    {
+      "question": "Which hospital to visit?",
+      "answer": "You can visit Tata Memorial Hospital in Mumbai or AIIMS in Delhi for advanced breast cancer care."
+    },
+    {
+      "question": "Where can I get breast cancer treatment in Mumbai?",
+      "answer": "Hospitals like Tata Memorial, Kokilaben Dhirubhai Ambani Hospital, and Fortis Mumbai are great options for breast cancer treatment."
+    },
+    {
       "question": "I don’t have a family history of breast cancer—should I still worry?",
       "answer": "Yes. Most breast cancer cases occur in women with no family history. That’s why regular \nscreening and awareness are key for everyone."
     },
@@ -218,5 +230,41 @@
     {
       "question": "Can I live a normal life after breast cancer?",
       "answer": "Absolutely. Many women go on to live full, active lives after treatment and recovery."
+    },
+    {
+      "question": "Hospitals in India for breast cancer treatment",
+      "answer": "Top hospitals in India include AIIMS (Delhi), Tata Memorial Hospital (Mumbai), Apollo Hospitals, Max Healthcare, and Fortis Healthcare."
+    },
+    {
+      "question": "hospitals?",
+      "answer": "You can consult hospitals like AIIMS, Tata Memorial, Apollo, and Fortis for breast cancer treatment."
+    },
+    {
+      "question": "Which hospital to visit?",
+      "answer": "You can visit Tata Memorial Hospital in Mumbai or AIIMS in Delhi for advanced breast cancer care."
+    },
+    {
+      "question": "Where can I get breast cancer treatment in India?",
+      "answer": "Hospitals like AIIMS, Tata Memorial Hospital, and Apollo Hospitals offer advanced treatment options for breast cancer."
+    },{
+      "question": "What kind of doctor treats breast cancer?",
+      "answer": "A breast cancer doctor is called an oncologist. Specifically, a medical oncologist, surgical oncologist, or radiation oncologist can treat breast cancer."
+    },
+    {
+      "question": "Which specialist is needed for breast cancer?",
+      "answer": "You need to consult a medical oncologist, surgical oncologist, and sometimes a radiation oncologist for breast cancer treatment."
+    },
+    {
+      "question": "How to find a breast cancer doctor?",
+      "answer": "You can consult hospitals like Tata Memorial, AIIMS, and Apollo to find expert oncologists specializing in breast cancer."
+    },
+    {
+      "question": "Who is a breast cancer specialist?",
+      "answer": "A breast cancer specialist is an oncologist who has expertise in diagnosing and treating breast cancer."
+    },
+    {
+      "question": "What does a breast cancer doctor do?",
+      "answer": "A breast cancer doctor (oncologist) diagnoses breast cancer, plans the treatment, and supervises therapies like surgery, chemotherapy, or radiation."
     }
+  
   ]
