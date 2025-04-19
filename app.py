@@ -5,7 +5,7 @@ import os
 app = Flask(__name__, static_folder='frontend', template_folder='frontend')
 
 # Load QnA data
-with open('data.json', 'r', encoding='utf-8') as f:
+with open('qa_data.json', 'r', encoding='utf-8') as f:
     qna_data = json.load(f)
 
 # Load hospital data
