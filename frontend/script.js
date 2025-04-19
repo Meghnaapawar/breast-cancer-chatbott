@@ -1,34 +1,42 @@
-function sendMessage() {
-  const userInput = document.getElementById('user-input').value;
-  const language = document.getElementById('language').value;
-  const chatBox = document.getElementById('chat-box');
+document.getElementById('send-btn').addEventListener('click', async () => {
+  const inputField = document.getElementById('user-input');
+  const userText = inputField.value.trim();
 
-  chatBox.innerHTML += `<div><strong>You:</strong> ${userInput}</div>`;
+  if (!userText) return;
 
-  fetch('http://127.0.0.1:5000/chat', {
+  appendMessage(`You: ${userText}`);
+
+  const response = await fetch('/chat', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message: userInput, language: language })
-  })
-  .then(res => res.json())
-  .then(data => {
-    chatBox.innerHTML += `<div><strong>Bot:</strong> ${data.reply}</div>`;
-    chatBox.scrollTop = chatBox.scrollHeight;
+    body: JSON.stringify({ question: userText })
   });
 
-  document.getElementById('user-input').value = '';
-}
+  const data = await response.json();
+  appendMessage(`Bot: ${data.answer}`);
 
-function loadHospitals() {
-  fetch('http://127.0.0.1:5000/hospitals')
-    .then(res => res.json())
-    .then(data => {
-      const list = document.getElementById('hospital-list');
-      list.innerHTML = '';
-      data.forEach(hospital => {
-        const item = document.createElement('li');
-        item.textContent = hospital;
-        list.appendChild(item);
-      });
+  inputField.value = '';
+});
+
+document.getElementById('show-hospitals').addEventListener('click', async () => {
+  const response = await fetch('/hospitals');
+  const data = await response.json();
+  const hospitals = data.hospitals;
+
+  if (hospitals && hospitals.length > 0) {
+    let hospitalList = 'Hospitals:\n';
+    hospitals.forEach((h, i) => {
+      hospitalList += `${i + 1}. ${h.name} - ${h.city}\n`;
     });
+    appendMessage(hospitalList);
+  } else {
+    appendMessage('No hospitals found.');
+  }
+});
+
+function appendMessage(message) {
+  const chatBox = document.getElementById('chat-box');
+  const msgElement = document.createElement('div');
+  msgElement.textContent = message;
+  chatBox.appendChild(msgElement);
 }
