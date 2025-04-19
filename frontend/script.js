@@ -1,42 +1,50 @@
-document.getElementById('send-btn').addEventListener('click', async () => {
-  const inputField = document.getElementById('user-input');
-  const userText = inputField.value.trim();
+document.addEventListener("DOMContentLoaded", function () {
+  const chatbox = document.getElementById("chatbox");
+  const userInput = document.getElementById("user-input");
+  const sendButton = document.getElementById("send-button");
 
-  if (!userText) return;
+  async function fetchChatResponse(userText) {
+    try {
+      const response = await fetch('/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ question: userText })
+      });
 
-  appendMessage(`You: ${userText}`);
+      const data = await response.json();
+      appendMessage(`Bot: ${data.answer}`);
+    } catch (err) {
+      console.error("Error:", err);
+      appendMessage("Bot: Sorry, something went wrong.");
+    }
+  }
 
-  const response = await fetch('/chat', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ question: userText })
+  function appendMessage(text) {
+    const msg = document.createElement("div");
+    msg.textContent = text;
+    chatbox.appendChild(msg);
+  }
+
+  sendButton.addEventListener("click", () => {
+    const userText = userInput.value.trim();
+    if (userText === "") return;
+    appendMessage(`You: ${userText}`);
+    fetchChatResponse(userText);
+    userInput.value = "";
   });
 
-  const data = await response.json();
-  appendMessage(`Bot: ${data.answer}`);
-
-  inputField.value = '';
-});
-
-document.getElementById('show-hospitals').addEventListener('click', async () => {
-  const response = await fetch('/hospitals');
-  const data = await response.json();
-  const hospitals = data.hospitals;
-
-  if (hospitals && hospitals.length > 0) {
-    let hospitalList = 'Hospitals:\n';
-    hospitals.forEach((h, i) => {
-      hospitalList += `${i + 1}. ${h.name} - ${h.city}\n`;
-    });
-    appendMessage(hospitalList);
-  } else {
-    appendMessage('No hospitals found.');
+  async function loadHospitals() {
+    try {
+      const response = await fetch('/hospitals');
+      const data = await response.json();
+      const hospitalDiv = document.getElementById("hospitals");
+      hospitalDiv.innerHTML = data.hospitals.map(h => `<li>${h.name}</li>`).join('');
+    } catch (err) {
+      console.error("Error loading hospitals:", err);
+    }
   }
-});
 
-function appendMessage(message) {
-  const chatBox = document.getElementById('chat-box');
-  const msgElement = document.createElement('div');
-  msgElement.textContent = message;
-  chatBox.appendChild(msgElement);
-}
+  loadHospitals();
+});
