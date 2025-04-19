@@ -7,15 +7,15 @@ app = Flask(__name__)
 CORS(app)
 
 # Load the QnA data
-with open("qna_data.json", "r") as file:
-    qna_data = json.load(file)
+with open("qa_data.json", "r") as file:
+    qa_data = json.load(file)
 
 def get_answer_from_json(question):
-    questions = [item["question"] for item in qna_data]
+    questions = [item["question"] for item in qa_data]
     closest_match = difflib.get_close_matches(question.lower(), [q.lower() for q in questions], n=1, cutoff=0.4)
 
     if closest_match:
-        for item in qna_data:
+        for item in qa_data:
             if item["question"].lower() == closest_match[0]:
                 return item["answer"]
     return "🤔 Sorry, I couldn't find an answer for that. Try rephrasing your question."
