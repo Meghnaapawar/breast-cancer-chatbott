@@ -1,43 +1,37 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
 import json
+from flask import Flask, request, jsonify
 import difflib
 
 app = Flask(__name__)
-CORS(app)
 
-# Load the QnA data
-with open("qa_data.json", "r") as file:
-    qa_data = json.load(file)
-
+# Function to load the questions and answers from JSON file
 def get_answer_from_json(question):
-    questions = [item["question"] for item in qa_data]
-    closest_match = difflib.get_close_matches(question.lower(), [q.lower() for q in questions], n=1, cutoff=0.4)
+    try:
+        with open("qa_data.json", "r") as file:
+            data = json.load(file)
 
-    if closest_match:
-        for item in qa_data:
-            if item["question"].lower() == closest_match[0]:
+        question_lower = question.strip().lower()
+        for item in data:
+            if item["question"].strip().lower() == question_lower:
                 return item["answer"]
-    return "🤔 Sorry, I couldn't find an answer for that. Try rephrasing your question."
+        return "🤖 I'm sorry, I don't have an answer for that yet."
+    except FileNotFoundError:
+        return "Error: qa_data.json not found."
+    except json.JSONDecodeError:
+        return "Error: Invalid JSON format."
 
-@app.route("/")
-def home():
-    return "✅ Breast Cancer Chatbot is live and ready to help!"
-
+# Route to handle chat requests
 @app.route("/chat", methods=["POST"])
 def chat():
     data = request.get_json()
     user_input = data.get("message")
-
+    
     if not user_input:
         return jsonify({"response": "⚠️ Please provide a message."})
 
-    try:
-        response = get_answer_from_json(user_input)
-    except Exception as e:
-        response = f"❌ Error: {str(e)}"
-
+    # Get the response based on the user's question
+    response = get_answer_from_json(user_input)
     return jsonify({"response": response})
 
 if __name__ == "__main__":
-    app.run(debug=False, port=10000)
+    app.run(debug=True)
