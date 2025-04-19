@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Load QnA data from the JSON file once
-with open("qna_data.json", "r") as file:
+with open("qa_data.json", "r") as file:
     qna_data = json.load(file)
 
 def get_answer_from_json(question):
